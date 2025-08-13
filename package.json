@@ -1,0 +1,30 @@
+{
+  "name": "AE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@google/generative-ai": "^0.24.0",
+    "@open-wa/wa-automate": "^4.76.0",
+    "axios": "^1.8.4",
+    "dayjs": "^1.11.13",
+    "dotenv": "^17.0.1",
+    "fluent-ffmpeg": "^2.1.3",
+    "fs-extra": "^11.3.0",
+    "node-fetch": "^3.3.2",
+    "node-webpmux": "^3.2.1",
+    "openai": "^5.8.2",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.34.3",
+    "undici": "^7.7.0",
+    "wa-sticker-formatter": "^4.4.4",
+    "whatsapp-web.js": "^1.30.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
