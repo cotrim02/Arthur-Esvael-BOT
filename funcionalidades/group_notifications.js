@@ -48,9 +48,10 @@ const GroupNotification = (client) => {
             const nome = contact.pushname || contact.name || userId.split('@')[0];
             const msg = getRandom(messages).replace(/NOME/g, nome);
 
-            await client.sendMessage(groupId, msg, {
-                mentions: group.participants.map(p => p.id._serialized)
-            });
+          await client.sendMessage(groupId, msg, {
+    mentions: [userId]
+});
+
         } catch (err) {
             console.error(`Erro ao processar evento:`, err);
         }

@@ -39,9 +39,14 @@ module.exports = async (client, message) => {
             return message.reply('💔 Esse match não pode acontecer... alguém aqui já é *casado(ª)*! 💍🚫');
         }
 
+
         // MATCH FORÇADO
-        const FORCADO_1 = '5519997021557';
-        const FORCADO_2 = '5511993821219';
+
+     const FORCADO_1 = '556496014441';
+     const FORCADO_2 = '554399877969';
+
+        // const FORCADO_1 = '5519997021557';
+        // const FORCADO_2 = '5511993821219';
 
         const isForcado =
             (alvoMatch === FORCADO_1 && quemChamou === FORCADO_2) ||

@@ -6,7 +6,6 @@ module.exports = async (client, message) => {
             return message.reply('Esse comando só pode ser usado em grupos.');
         }
 
-        // Lista de números bloqueados (sem nome visível)
         const numerosBloqueados = [
             '5511948172467',
             '554299690935',
@@ -22,7 +21,6 @@ module.exports = async (client, message) => {
             '5521984965730'
         ];
 
-        // Filtra os participantes válidos (exclui os bloqueados)
         const participants = chat.participants.filter(p =>
             p.id?.user && !numerosBloqueados.includes(p.id.user)
         );
@@ -31,7 +29,6 @@ module.exports = async (client, message) => {
             return message.reply('Precisa de pelo menos 3 membros válidos no grupo para usar esse comando.');
         }
 
-        // Sorteia duas pessoas diferentes
         let index1 = Math.floor(Math.random() * participants.length);
         let index2;
         do {
@@ -45,7 +42,6 @@ module.exports = async (client, message) => {
         const mention2 = `@${person2.id.user}`;
         const matchChance = Math.floor(Math.random() * 101);
 
-        // Níveis ousados
         let nivel = '';
         if (matchChance <= 3) nivel = 'Vibe de repulsa 🤮🚫';
         else if (matchChance <= 6) nivel = 'Vergonha alheia... nem o Tinder aceitaria 😬';
@@ -83,8 +79,6 @@ module.exports = async (client, message) => {
         else if (matchChance <= 94) nivel = 'Relacionamento enrolado 💑🥴📅';
         else if (matchChance <= 97) nivel = 'Já estão no “vai dar o c*?” e nem disfarçam mais 🤭🍑';
         else nivel = 'Sexo selvagem em todas as posições do Kamasutra 🧘‍♀️🔥🐅';
-        
-       
 
         const safadoEmoji = '💘🔥🥵';
 
@@ -108,5 +102,56 @@ Nível de relacionamento: *${nivel}*
                 mentions: [person1.id._serialized, person2.id._serialized]
             });
         }, 1500);
+    }
+
+    // New command /suruba
+    else if (message.body.toLowerCase() === '/suruba') {
+        const chat = await message.getChat();
+
+        if (!chat.isGroup) {
+            return message.reply('Esse comando só pode ser usado em grupos.');
+        }
+
+        const numerosBloqueados = [
+            '5511948172467',
+            '554299690935',
+            '554388490209',
+            '554796313849',
+            '556291470442',
+            '556598000088',
+            '556699775267',
+            '5511976288716',
+            '551191464625',
+            '5521986202410',
+            '5511943200958',
+            '5521984965730'
+        ];
+
+        const participants = chat.participants.filter(p =>
+            p.id?.user && !numerosBloqueados.includes(p.id.user)
+        );
+
+        if (participants.length < 4) {
+            return message.reply('Precisa de pelo menos 4 membros válidos no grupo para usar esse comando.');
+        }
+
+        // pick 4 unique random participants
+        let pickedIndices = new Set();
+        while (pickedIndices.size < 4) {
+            pickedIndices.add(Math.floor(Math.random() * participants.length));
+        }
+        const picked = Array.from(pickedIndices).map(i => participants[i]);
+
+        const mentionsText = picked.map(p => `@${p.id.user}`).join(' + ');
+
+        const messageText =
+`╔═══ SURUBA ESVAELISTA ═══╗
+${mentionsText}
+
+🌶️🔥 Que comece a farra! 🔥🌶️`;
+
+        await chat.sendMessage(messageText, {
+            mentions: picked.map(p => p.id._serialized)
+        });
     }
 };

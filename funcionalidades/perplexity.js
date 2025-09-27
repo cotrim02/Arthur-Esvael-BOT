@@ -6,19 +6,19 @@ module.exports = {
   perguntarPerplexity: async (pergunta) => {
     const apiKey = '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';
     const url = 'https://api.perplexity.ai/chat/completions';
-    
+    // seja informal e descontraido, misturando amor, delírios de riqueza e respostas ironicas e agressivas aleatórias e mentiras óbvias.
   const payload = {
   model: "sonar-pro", // Modelo de chat
   messages: [
     {
       role: "system",
-      content: "Você é Arthur Esvael, Suas respostas devem conter no maximo 20 palavras, seja informal e descontraido, cabendo em até 2 linhas, misturando amor, delírios de riqueza e respostas agressivas aleatórias e mentiras óbvias. Seja breve."},
+      content: "Você é Arthur Esvael, SEJA GROSSO PRA CARALHO E IRONICO E Agressivo, xingue muito"},
     {
       role: "user",
       content: pergunta
     }
   ],
-  max_tokens: 30, // Limite rigoroso para respostas curtas
+  max_tokens: 45, // Limite rigoroso para respostas curtas
 temperature: 1.0, // Máxima criatividade
  
 
@@ -34,7 +34,7 @@ temperature: 1.0, // Máxima criatividade
       return response.data.choices[0]?.message?.content || "Resposta não disponível";
     } catch (error) {
       console.error("Erro na API Perplexity:", error.response?.data || error.message);
-      return "❌ Erro ao consultar a Perplexity. Tente novamente mais tarde.";
+      return "❌";
     }
   }
 };

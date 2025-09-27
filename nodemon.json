@@ -1,4 +1,6 @@
 {
-    "ignore": ["data/*"]
-  }
-  
+  "ignore": [
+    "data/*",
+    "funcionalidades/frases_arthur.json"
+  ]
+}

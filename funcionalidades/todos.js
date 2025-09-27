@@ -57,7 +57,10 @@ module.exports = async (client, message) => {
 `
 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 🛑MANDEM PIX IMEDIATAMENTE ! 🛑
-🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑`, {
+🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+
+> PIX:
+ arthuresvaelunderwear@gmail.com`, {
     mentions
 });
 
