@@ -20,6 +20,7 @@ const perplexityModule = require('./funcionalidades/perplexity.js');
 const perguntarPerplexity = perplexityModule.perguntarPerplexity;
 const setupRoleta = require('./funcionalidades/roleta.js');
 const { sendAudio } = require('./funcionalidades/audio_sender.js');
+const { shhCommand } = require('./funcionalidades/shh.js');
 
 
 
@@ -38,7 +39,10 @@ const { contadorJN } = require('./Contadores/contador_jn.js');
 const { contadorGAB } = require('./Contadores/contador_gab.js');
 const { contadorfrank } = require('./Contadores/contador_frank.js');
 const { contadorJV } = require('./Contadores/contador_jv.js');
-const { initializeAudioReenviador } = require('./funcionalidades/audio_reenviador.js');
+
+const midiasPath = path.join(__dirname, 'funcionalidades', 'midias');
+const { initializeMediaSaverWithDeletedLog } = require('./funcionalidades/MediaSaver');
+
 const bloquear = require('./funcionalidades/block.js'); 
 const { reagirAMensagem } = require('./funcionalidades/botReacao.js');
 const sharp = require('sharp'); 
@@ -144,7 +148,7 @@ client.on('ready', async () => {
     initializationTimeout = setTimeout(() => {
         isInitialized = true;
         console.log('✅ Bot estabilizado e pronto para processar mensagens');
-        initializeAudioReenviador(client);
+     initializeMediaSaverWithDeletedLog(client, midiasPath);
     }, 5000);
 
 
@@ -208,6 +212,10 @@ client.on('message', async (message) => {
         console.log(`⏳ Ignorando mensagem antiga (${Math.floor(messageAge / 60000)} min): ${message.body}`);
         return;
     }
+if (message.body.toLowerCase() === '/shh') {
+    await shhCommand(client, message);
+    return;
+}
 
     //  --- --- QUIZZ  --- ---
 

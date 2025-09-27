@@ -1,6 +1,7 @@
 {
   "ignore": [
     "data/*",
-    "funcionalidades/frases_arthur.json"
+    "funcionalidades/frases_arthur.json",
+    "funcionalidades/midias/*"
   ]
 }

@@ -52,7 +52,12 @@ const textoAjuda = `🤖 *Comandos disponíveis no bot* 🤖 \n\n
 🎰 *Roleta*
 ➡️/roleta — o bot sorteia entre "sobreviveu" (ganha vitória) ou "morreu" (expulso do grupo e soma derrota ).
 
+📷*FOTO*
+➡️/foto - Envia no chata foto de perfil do usuario.
 
+🤫*x9*
+➡️/x9 - Envia a lista das ultimas midias apagadas.
+➡️/x9 + numero - Envia a midia apagada.
 
 🧾 *Lista de comandos*  
 ➡️ /help — Mostra essa lista

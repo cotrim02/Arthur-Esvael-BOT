@@ -1,0 +1,40 @@
+[
+  {
+    "type": "image",
+    "mimetype": "image/webp",
+    "extension": "webp",
+    "fileName": "4.webp",
+    "title": "Image de david às 19:32",
+    "sender": "david",
+    "timestamp": 1759012349,
+    "text": null
+  },
+  {
+    "type": "image",
+    "mimetype": "image/webp",
+    "extension": "webp",
+    "fileName": "3.webp",
+    "title": "Image de david às 19:30",
+    "sender": "david",
+    "timestamp": 1759012205,
+    "text": null
+  },
+  {
+    "type": "image",
+    "mimetype": "image/webp",
+    "extension": "webp",
+    "fileName": "2.webp",
+    "title": "Image de Victor Colt ~~ às 19:26",
+    "sender": "Victor Colt ~~",
+    "timestamp": 1759012015,
+    "text": null
+  },
+  {
+    "type": "texto",
+    "text": "FODASEEEEEE",
+    "fileName": "1.txt",
+    "title": "MSG DE Victor Colt ~~ às 19:26",
+    "sender": "Victor Colt ~~",
+    "timestamp": 1759012001
+  }
+]
