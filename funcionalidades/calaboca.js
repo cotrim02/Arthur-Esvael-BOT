@@ -36,12 +36,22 @@ async function calabocaCommand(client, message) {
 
     // Usa sempre message.author em grupo
     const senderId = message.author;
-    console.log('SenderId:', senderId); // Para depuração
+    // Compatibilidade com LID (novo formato de ID do WhatsApp)
+    let senderNumber = senderId;
+    if (senderId && senderId.includes('@lid')) {
+        try {
+            const senderContact = await client.getContactById(senderId);
+            senderNumber = senderContact.number ? `${senderContact.number}@c.us` : senderId;
+        } catch (e) {
+            senderNumber = senderId;
+        }
+    }
+    console.log('SenderId:', senderId, 'SenderNumber:', senderNumber); // Para depuração
 
     const isAdmin = await isUserAdmin(chat, senderId);
 
-    // Permite se for admin OU número liberado
-    if (!isAdmin && senderId !== NUMERO_LIBERADO) {
+    // Permite se for admin OU número liberado (agora compatível com formato lid)
+    if (!isAdmin && senderNumber !== NUMERO_LIBERADO) {
         await message.reply('❌ APENAS ADM ❌ .');
         return;
     }

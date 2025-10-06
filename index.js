@@ -5,7 +5,7 @@ const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-
+const cron = require('node-cron');
 
 
 // Importação dos módulos
@@ -41,7 +41,7 @@ const { contadorfrank } = require('./Contadores/contador_frank.js');
 const { contadorJV } = require('./Contadores/contador_jv.js');
 
 const midiasPath = path.join(__dirname, 'funcionalidades', 'midias');
-const { initializeMediaSaverWithDeletedLog } = require('./funcionalidades/MediaSaver');
+const { initializeMediaSaverWithDeletedLog } = require('./funcionalidades/MediaSaver.js');
 
 const bloquear = require('./funcionalidades/block.js'); 
 const { reagirAMensagem } = require('./funcionalidades/botReacao.js');
@@ -50,6 +50,12 @@ const { acervoRespostas } = require('./funcionalidades/acervoRespostas.js');
 const { GroupNotification } = require('./funcionalidades/group_notifications.js');
 const { convertVideoToSticker } = require('./funcionalidades/convertToSticker.js');
 const fotoCommand = require('./funcionalidades/fotoCommand');
+
+
+
+
+
+const numeroDestino = '5511999999999@c.us'; // Troque para o número desejado
 
 // Definição de pastas
 const MIDIAS_DIR = path.join(__dirname, 'midias');
@@ -125,79 +131,103 @@ client.on('qr', (qr) => {
 
 GroupNotification(client);
 
-// Evento quando o cliente estiver pronto
 client.on('ready', async () => {
-    console.log('✅ Bot conectado ao WhatsApp!');
-    try {
-        const chats = await client.getChats();
-        const grupos = chats.filter(chat => chat.isGroup);
+  console.log('✅ Bot conectado ao WhatsApp!');
 
-        console.log('\n📋 LISTA DE GRUPOS DETECTADOS AO INICIAR:\n');
-        grupos.forEach((grupo, i) => {
-            console.log(`${i + 1}. ${grupo.name} => ${grupo.id._serialized}`);
-        });
-        console.log('\n📋 FIM DA LISTA DE GRUPOS\n');
-    } catch (error) {
-        console.error('❌ Erro ao buscar grupos:', error);
-    }
-
-    
-
-    // Delay de 10s para estabilização
-    console.log('⏳ Aguardando 5s para estabilização...');
-    initializationTimeout = setTimeout(() => {
-        isInitialized = true;
-        console.log('✅ Bot estabilizado e pronto para processar mensagens');
-     initializeMediaSaverWithDeletedLog(client, midiasPath);
-    }, 5000);
-
-
-let notifiedVideoId = null;
-
-const AUTO_START_HOUR = 7;   // início do período automático (7h)
-const AUTO_END_HOUR = 24;    // fim do período automático (meia-noite)
-
-async function checkYouTubeAndNotify() {
   try {
-    const { live, liveTitle, liveUrl } = await checkYouTubeLive(CHANNEL_ID, API_KEY);
-    if (live) {
-      const videoId = liveUrl.split('v=')[1];
-      if (videoId !== notifiedVideoId) {
-        notifiedVideoId = videoId;
+    const chats = await client.getChats();
+    const grupos = chats.filter(chat => chat.isGroup);
 
-        const chat = await client.getChatById(WHATSAPP_ID);
-        const mentions = chat.participants.map(p => p.id._serialized);
-
-        const messageText = `⚠️ CORRE! ⚠️\nArthur está AO VIVO: ${liveTitle}\nAssista aqui: ${liveUrl}`;
-        await chat.sendMessage(messageText, { mentions });
-      }
-    } else {
-      notifiedVideoId = null;
-    }
+    console.log('\n📋 LISTA DE GRUPOS DETECTADOS AO INICIAR:\n');
+    grupos.forEach((grupo, i) => {
+      console.log(`${i + 1}. ${grupo.name} => ${grupo.id._serialized}`);
+    });
+    console.log('\n📋 FIM DA LISTA DE GRUPOS\n');
   } catch (error) {
-    console.error('Erro ao verificar live do YouTube ou enviar mensagem:', error);
+    console.error('❌ Erro ao buscar grupos:', error);
   }
-}
 
-setInterval(() => {
-  const now = new Date();
-  const hour = now.getHours();
-  if (hour >= AUTO_START_HOUR && hour < AUTO_END_HOUR) {
-    checkYouTubeAndNotify();
+  // Delay de 5 segundos para estabilização
+  console.log('⏳ Aguardando 5s para estabilização...');
+  initializationTimeout = setTimeout(() => {
+    isInitialized = true;
+    console.log('✅ Bot estabilizado e pronto para processar mensagens');
+    initializeMediaSaverWithDeletedLog(client, midiasPath);
+  }, 5000);
+
+  let notifiedVideoId = null;
+  const AUTO_START_HOUR = 7;    // início do período automático (7h)
+  const AUTO_END_HOUR = 24;     // fim do período automático (meia-noite)
+
+  async function checkYouTubeAndNotify() {
+    try {
+      const { live, liveTitle, liveUrl } = await checkYouTubeLive(CHANNEL_ID, API_KEY);
+      if (live) {
+        const videoId = liveUrl.split('v=')[1];
+        if (videoId !== notifiedVideoId) {
+          notifiedVideoId = videoId;
+
+          const chat = await client.getChatById(WHATSAPP_ID);
+          const mentions = chat.participants.map(p => p.id._serialized);
+
+          const messageText = `⚠️ CORRE! ⚠️\nArthur está AO VIVO: ${liveTitle}\nAssista aqui: ${liveUrl}`;
+          await chat.sendMessage(messageText, { mentions });
+        }
+      } else {
+        notifiedVideoId = null;
+      }
+    } catch (error) {
+      console.error('Erro ao verificar live do YouTube ou enviar mensagem:', error);
+    }
   }
-}, 240000); // intervalos de 4 minutos
 
+  // Intervalo para checar live a cada 4 minutos, somente dentro do horário
+  setInterval(() => {
+    const now = new Date();
+    const hour = now.getHours();
+    if (hour >= AUTO_START_HOUR && hour < AUTO_END_HOUR) {
+      checkYouTubeAndNotify();
+    }
+  }, 240000); // 4 minutos
 
+  // Configura agendamento de mensagens cron para vários horários
+  const numeroDestino = '5511@c.us'; // Ajuste o número desejado
+  
+  const mensagens = [
+    { horario: '0 5 * * *', texto: 'VTNC ACORDA INFERNO (05:00)' },
+    { horario: '0 6 * * *', texto: 'VAI FILHAO JA DEU A HORA (06:00)' },
+    { horario: '10 6 * * *', texto: 'CADE MEU COPO PORRA(06:10)' },
+    { horario: '30 6 * * *', texto: 'ZZZ (06:30)' },
+    { horario: '0 7 * * *', texto: 'IDAI MANO? QUERO MEU COPO  (07:00)' },
+    { horario: '0 8 * * *', texto: 'MLK VC TA FODIDO CADE MEU COPO (08:00)' }
+  ];
 
+  mensagens.forEach(({ horario, texto }) => {
+    cron.schedule(horario, () => {
+      client.sendMessage(numeroDestino, texto);
+      console.log(`Mensagem enviada (${texto}) no horário: ${horario}`);
+    });
+  });
+
+//   // TESTE: Agendamento para daqui 3 minutos após iniciar o bot
+//   const now = new Date();
+//   const minutosTeste = (now.getMinutes() + 3) % 60;
+//   const horaTeste = now.getHours();
+//   const cronTeste = `${minutosTeste} ${horaTeste} * * *`;
+
+//   cron.schedule(cronTeste, () => {
+//     client.sendMessage(numeroDestino, 'Mensagem de TESTE - agendamento de minutos');
+//     console.log('Enviada mensagem de teste!');
+//   });
+
+//   console.log(`Teste agendado para as ${horaTeste}:${minutosTeste < 10 ? '0' : ''}${minutosTeste}`);
 });
 
-let messageCount = 0;
-const numeroBot = '5511991074272@c.us';
 
-function shouldReplyRandomly() {
-    messageCount++;
-    return Math.floor(Math.random() * 40) === 0;
-}
+
+
+
+
 
 
 

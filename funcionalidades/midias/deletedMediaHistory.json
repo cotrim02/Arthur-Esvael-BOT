@@ -1,40 +1,126 @@
 [
   {
-    "type": "image",
-    "mimetype": "image/webp",
-    "extension": "webp",
-    "fileName": "4.webp",
-    "title": "Image de david às 19:32",
-    "sender": "david",
-    "timestamp": 1759012349,
+    "type": "texto",
+    "text": "20:20",
+    "fileName": "1.txt",
+    "title": "MSG DE Crivelli às 20:20",
+    "sender": "Crivelli",
+    "timestamp": 1759620035
+  },
+  {
+    "type": "texto",
+    "text": "01:01",
+    "fileName": "2.txt",
+    "title": "MSG DE Crivelli às 01:01",
+    "sender": "Crivelli",
+    "timestamp": 1759550487
+  },
+  {
+    "type": "texto",
+    "text": "leitoa",
+    "fileName": "5.txt",
+    "title": "MSG DE hwdes às 16:48",
+    "sender": "hwdes",
+    "timestamp": 1759520910
+  },
+  {
+    "type": "texto",
+    "text": "obesa",
+    "fileName": "4.txt",
+    "title": "MSG DE hwdes às 16:48",
+    "sender": "hwdes",
+    "timestamp": 1759520909
+  },
+  {
+    "type": "texto",
+    "text": "ela tem 465 kg",
+    "fileName": "3.txt",
+    "title": "MSG DE hwdes às 16:48",
+    "sender": "hwdes",
+    "timestamp": 1759520896
+  },
+  {
+    "type": "texto",
+    "text": "Branco",
+    "fileName": "11.txt",
+    "title": "MSG DE Gabriel Meireles às 11:41",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502460
+  },
+  {
+    "type": "texto",
+    "text": "Negro",
+    "fileName": "10.txt",
+    "title": "MSG DE Gabriel Meireles às 11:40",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502445
+  },
+  {
+    "type": "texto",
+    "text": "Calma bb",
+    "fileName": "9.txt",
+    "title": "MSG DE Gabriel Meireles às 11:40",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502402
+  },
+  {
+    "type": "texto",
+    "text": "Si",
+    "fileName": "8.txt",
+    "title": "MSG DE Gabriel Meireles às 11:39",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502384
+  },
+  {
+    "type": "texto",
+    "text": "Cirúrgico",
+    "fileName": "7.txt",
+    "title": "MSG DE Gabriel Meireles às 11:39",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502371
+  },
+  {
+    "type": "texto",
+    "text": "Combo perfeito",
+    "fileName": "6.txt",
+    "title": "MSG DE Gabriel Meireles às 11:39",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759502343
+  },
+  {
+    "type": "jpg",
+    "mimetype": "",
+    "extension": "jpg",
+    "fileName": "4.jpg",
+    "title": "JPG de samara 🔮 às 10:25",
+    "sender": "samara 🔮",
+    "timestamp": 1759497914,
     "text": null
   },
   {
-    "type": "image",
-    "mimetype": "image/webp",
-    "extension": "webp",
-    "fileName": "3.webp",
-    "title": "Image de david às 19:30",
-    "sender": "david",
-    "timestamp": 1759012205,
-    "text": null
-  },
-  {
-    "type": "image",
-    "mimetype": "image/webp",
-    "extension": "webp",
-    "fileName": "2.webp",
-    "title": "Image de Victor Colt ~~ às 19:26",
-    "sender": "Victor Colt ~~",
-    "timestamp": 1759012015,
+    "type": "pdf",
+    "mimetype": "",
+    "extension": "pdf",
+    "fileName": "1.pdf",
+    "title": "PDF de Luizão às 20:39",
+    "sender": "Luizão",
+    "timestamp": 1759448398,
     "text": null
   },
   {
     "type": "texto",
-    "text": "FODASEEEEEE",
-    "fileName": "1.txt",
-    "title": "MSG DE Victor Colt ~~ às 19:26",
-    "sender": "Victor Colt ~~",
-    "timestamp": 1759012001
+    "text": "😂😂😂😂",
+    "fileName": "15.txt",
+    "title": "MSG DE Gabriel Meireles às 19:09",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759442996
+  },
+  {
+    "type": "texto",
+    "text": "O pessoal daqui é uma figura mesmo",
+    "fileName": "14.txt",
+    "title": "MSG DE Gabriel Meireles às 19:09",
+    "sender": "Gabriel Meireles",
+    "timestamp": 1759442975
   }
 ]

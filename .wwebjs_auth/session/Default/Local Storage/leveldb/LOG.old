@@ -1,3 +1,9 @@
-2025/09/27-19:47:06.730 2298 Reusing MANIFEST C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/09/27-19:47:06.731 2298 Recovering log #104
-2025/09/27-19:47:06.731 2298 Reusing old log C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/000104.log 
+2025/10/04-16:32:33.252 1620 Reusing MANIFEST C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/10/04-16:32:33.253 1620 Recovering log #194
+2025/10/04-16:32:33.254 1620 Reusing old log C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/000194.log 
+2025/10/04-17:22:43.455 4028 Level-0 table #198: started
+2025/10/04-17:22:43.461 4028 Level-0 table #198: 15443 bytes OK
+2025/10/04-17:22:43.464 4028 Delete type=0 #194
+2025/10/04-21:13:00.563 1684 Level-0 table #200: started
+2025/10/04-21:13:00.569 1684 Level-0 table #200: 15535 bytes OK
+2025/10/04-21:13:00.575 1684 Delete type=0 #197

@@ -1,6 +1,15 @@
-2025/09/27-19:48:38.558 37c4 Reusing MANIFEST C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/09/27-19:48:38.559 37c4 Recovering log #104
-2025/09/27-19:48:38.559 37c4 Reusing old log C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/000104.log 
-2025/09/27-19:50:39.125 3328 Level-0 table #108: started
-2025/09/27-19:50:39.130 3328 Level-0 table #108: 14571 bytes OK
-2025/09/27-19:50:39.132 3328 Delete type=0 #104
+2025/10/06-14:40:43.953 2244 Reusing MANIFEST C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/10/06-14:40:43.976 2244 Recovering log #199
+2025/10/06-14:40:43.977 2244 Reusing old log C:\AE\.wwebjs_auth\session\Default\Local Storage\leveldb/000199.log 
+2025/10/06-17:00:58.224 3268 Level-0 table #203: started
+2025/10/06-17:00:58.233 3268 Level-0 table #203: 16911 bytes OK
+2025/10/06-17:00:58.237 3268 Delete type=0 #199
+2025/10/06-17:00:58.250 3268 Compacting 4@0 + 1@1 files
+2025/10/06-17:00:58.260 3268 Generated table #204@0: 1074 keys, 19906 bytes
+2025/10/06-17:00:58.260 3268 Compacted 4@0 + 1@1 files => 19906 bytes
+2025/10/06-17:00:58.263 3268 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/10/06-17:00:58.264 3268 Delete type=2 #192
+2025/10/06-17:00:58.264 3268 Delete type=2 #195
+2025/10/06-17:00:58.265 3268 Delete type=2 #198
+2025/10/06-17:00:58.265 3268 Delete type=2 #200
+2025/10/06-17:00:58.265 3268 Delete type=2 #203
